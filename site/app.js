@@ -13,7 +13,7 @@
     var toBuyList = this;
 
     toBuyList.items = ShoppingListCheckOffService.getToBuyItems();
-    toBuyList.message = "This list is empty!";
+    toBuyList.message = "Everything is bought!";
     toBuyList.newItemName = "";
     toBuyList.newItemQuantity = "";
 
@@ -33,7 +33,7 @@
       var boughtList = this;
 
       boughtList.items = ShoppingListCheckOffService.getBoughtItems();
-      boughtList.message = "This list is empty!";
+      boughtList.message = "Nothing bought yet!";
   }
 
   function ShoppingListCheckOffService() {
