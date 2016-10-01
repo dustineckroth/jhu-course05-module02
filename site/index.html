@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>ShoppingListCheckOff</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="app.js"></script>
+  </head>
+<body ng-app="ShoppingListCheckOff">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <h1>Shopping List</h1>
+
+        <table class="table table-striped">
+          <tr>
+            <th><h3>To Buy</h3></th>
+            <th><h3>Bought</h3></th>
+          </tr>
+          <tr>
+            <td>
+
+              <div ng-controller="ToBuyController as toBuyList">
+
+                <li ng-repeat="item in toBuyList.items">
+                  <button class="btn btn-default" ng-click="toBuyList.moveToBoughtList($index);">
+                    Bought!</button>
+                  {{item.quantity}} {{item.name}}
+                </li>
+
+                <div class="form-group message" ng-if="toBuyList.items.length==0">
+                  {{toBuyList.message}}
+                </div>
+
+                <div class="form-group form-inline">
+                    <br/>
+                    <br/>
+
+                    <input type="text" placeholder="quantity"
+                    class="form-control" ng-model="toBuyList.newItemQuantity">
+
+                    <input type="text" placeholder="name"
+                    class="form-control" ng-model="toBuyList.newItemName">
+
+                    <button class="btn btn-primary" ng-click="toBuyList.addItem();">
+                      Add to List</button>
+                </div>
+              </div>
+
+            </td>
+
+            <td>
+              <div ng-controller="AlreadyBoughtController as boughtList">
+
+                <li ng-repeat="item in boughtList.items">
+                  {{item.quantity}} {{item.name}}
+                </li>
+
+                <div class="form-group message" ng-if="boughtList.items.length==0">
+                  {{boughtList.message}}
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
